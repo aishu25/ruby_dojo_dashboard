@@ -1,0 +1,35 @@
+<% if flash[:error] %>
+	<div>
+		<ul>
+			<%= flash[:error].each do |msg|  %>
+		    	<li><%= msg %></li>
+		    <% end %>
+		</ul>
+	</div>
+<% end %>
+
+<h1>Listing <%= @count %> Dojos</h1>
+<table style="border: 1px solid black;border-collapse: collapse;">
+	<thead style="border: 1px solid black;border-collapse: collapse;">
+		<tr>
+			<td style="border: 1px solid black;border-collapse: collapse;">Coding Dojo Branch</td>
+			<td style="border: 1px solid black;border-collapse: collapse;">Street</td>
+			<td style="border: 1px solid black;border-collapse: collapse;">City</td>
+			<td style="border: 1px solid black;border-collapse: collapse;">States</td>
+			<td style="border: 1px solid black;border-collapse: collapse;">Action</td>
+		</tr>
+	</thead>
+	<tbody>
+		<% @dojos.each do |dojo| %>
+			<tr>
+				<td style="border: 1px solid black;border-collapse: collapse;"><%= dojo.branch %></td>
+				<td style="border: 1px solid black;border-collapse: collapse;"><%= dojo.street %></td>
+				<td style="border: 1px solid black;border-collapse: collapse;"><%= dojo.city %></td>
+				<td style="border: 1px solid black;border-collapse: collapse;"><%= dojo.states %></td>
+				<td style="border: 1px solid black;border-collapse: collapse;"><a href="dojos/<%= dojo.id %>">Show</a>/<a href="dojos/<%= dojo.id %>/edit">Edit</a>/<a href="dojos/<%= dojo.id %>" data-method="delete">Destory</a></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<a href="dojos/new">Add new Dojo</a>
